@@ -165,7 +165,6 @@ class Trade(commands.GroupCog):
         interaction: discord.Interaction,
         countryball: BallInstanceTransform,
         special: SpecialEnabledTransform | None = None,
-        shiny: bool | None = None,
     ):
         """
         Add a countryball to the ongoing trade.
@@ -176,8 +175,6 @@ class Trade(commands.GroupCog):
             The countryball you want to add to your proposal
         special: Special
             Filter the results of autocompletion to a special event. Ignored afterwards.
-        shiny: bool
-            Filter the results of autocompletion to shinies. Ignored afterwards.
         """
         if not countryball:
             return
@@ -239,7 +236,6 @@ class Trade(commands.GroupCog):
         self,
         interaction: discord.Interaction,
         countryball: BallEnabledTransform | None = None,
-        shiny: bool | None = None,
         special: SpecialEnabledTransform | None = None,
     ):
         """
@@ -249,8 +245,6 @@ class Trade(commands.GroupCog):
         ----------
         countryball: Ball
             The countryball you would like to filter the results to
-        shiny: bool
-            Filter the results to shinies
         special: Special
             Filter the results to a special event
         """
@@ -269,8 +263,6 @@ class Trade(commands.GroupCog):
         filters = {}
         if countryball:
             filters["ball"] = countryball
-        if shiny:
-            filters["shiny"] = shiny
         if special:
             filters["special"] = special
         filters["player__discord_id"] = interaction.user.id
@@ -295,7 +287,6 @@ class Trade(commands.GroupCog):
         interaction: discord.Interaction,
         countryball: BallInstanceTransform,
         special: SpecialEnabledTransform | None = None,
-        shiny: bool | None = None,
     ):
         """
         Remove a countryball from what you proposed in the ongoing trade.
@@ -306,8 +297,6 @@ class Trade(commands.GroupCog):
             The countryball you want to remove from your proposal
         special: Special
             Filter the results of autocompletion to a special event. Ignored afterwards.
-        shiny: bool
-            Filter the results of autocompletion to shinies. Ignored afterwards.
         """
         if not countryball:
             return
